@@ -1,0 +1,197 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: linear-gradient(135deg, #e9ddff, #d9ecff, #f4eaff);
+    min-height: 100vh;
+    color: #26335f;
+}
+
+/* Header */
+
+header {
+    background: linear-gradient(135deg, #7b61d9, #5b8de8, #8b72e8);
+    color: white;
+    text-align: center;
+    padding: 30px 20px;
+    box-shadow: 0 5px 20px rgba(80, 80, 150, 0.3);
+}
+
+header h1 {
+    margin: 0;
+    font-size: 32px;
+    letter-spacing: 1px;
+    text-shadow: 0 2px 8px rgba(255, 255, 255, 0.5);
+}
+
+header p {
+    margin-top: 10px;
+    font-size: 16px;
+}
+
+
+/* Main Container */
+
+.container {
+    width: 85%;
+    max-width: 900px;
+    margin: 35px auto;
+}
+
+
+/* Cards */
+
+.card {
+    background: linear-gradient(
+        135deg,
+        rgba(255, 255, 255, 0.85),
+        rgba(238, 229, 255, 0.75),
+        rgba(225, 240, 255, 0.8)
+    );
+
+    padding: 25px;
+    margin-bottom: 25px;
+
+    border-radius: 18px;
+
+    border: 1px solid rgba(255, 255, 255, 0.8);
+
+    box-shadow:
+        0 8px 25px rgba(91, 91, 160, 0.18),
+        inset 0 1px 10px rgba(255, 255, 255, 0.8);
+
+    backdrop-filter: blur(10px);
+}
+
+
+/* Card Heading */
+
+.card h2 {
+    color: #5c4bb7;
+    margin-top: 0;
+    margin-bottom: 20px;
+}
+
+
+/* Labels */
+
+label {
+    display: block;
+    margin-top: 15px;
+    margin-bottom: 7px;
+    font-weight: bold;
+    color: #39477a;
+}
+
+
+/* Inputs & Select */
+
+input,
+select {
+    width: 100%;
+    padding: 13px;
+
+    border: 1px solid #c7b9ee;
+    border-radius: 10px;
+
+    background: rgba(255, 255, 255, 0.85);
+
+    font-size: 15px;
+    color: #303b6b;
+
+    outline: none;
+
+    transition: 0.3s;
+}
+
+
+/* Input focus shining effect */
+
+input:focus,
+select:focus {
+    border-color: #7b61d9;
+
+    box-shadow:
+        0 0 8px rgba(123, 97, 217, 0.35),
+        0 0 15px rgba(91, 141, 232, 0.2);
+}
+
+
+/* Purpose input */
+
+#purpose {
+    margin-top: 18px;
+}
+
+
+/* Button */
+
+button {
+    width: 100%;
+
+    padding: 14px;
+    margin-top: 22px;
+
+    border: none;
+    border-radius: 12px;
+
+    background: linear-gradient(
+        135deg,
+        #765bd4,
+        #568ce5,
+        #8870e6
+    );
+
+    color: white;
+
+    font-size: 16px;
+    font-weight: bold;
+
+    cursor: pointer;
+
+    box-shadow:
+        0 5px 15px rgba(91, 91, 180, 0.3),
+        0 0 12px rgba(139, 114, 232, 0.2);
+
+    transition: 0.3s;
+}
+
+
+/* Button shining hover */
+
+button:hover {
+    transform: translateY(-2px);
+
+    box-shadow:
+        0 8px 20px rgba(91, 91, 180, 0.4),
+        0 0 20px rgba(139, 114, 232, 0.45);
+}
+
+
+/* Booking Result */
+
+#result {
+    line-height: 1.8;
+    color: #39477a;
+}
+
+
+/* Responsive Design */
+
+@media (max-width: 600px) {
+
+    .container {
+        width: 92%;
+    }
+
+    header h1 {
+        font-size: 25px;
+    }
+
+    .card {
+        padding: 20px;
+    }
+}

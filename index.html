@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>College Resource Booking</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <header>
+        <h1>College Resource Booking</h1>
+        <p>Department Resource Management System</p>
+    </header>
+
+    <div class="container">
+
+        <!-- Department -->
+        <div class="card">
+            <h2>Department Details</h2>
+
+            <label>Select Department</label>
+
+            <select id="department">
+                <option value="">Select Department</option>
+                <option>MCA</option>
+                <option>BCA</option>
+                <option>HRM</option>
+                <option>B.Com</option>
+                <option>B.Sc Computer Science</option>
+            </select>
+        </div>
+
+
+        <!-- Available Resources -->
+        <div class="card">
+
+            <h2>Available Resources</h2>
+
+            <div class="resource">
+                 <b> SCC Computer Lab</b>
+                <span class="available"> -Available</span>
+            </div>
+
+            <div class="resource">
+                 <b>Barbier Hall</b>
+                <span class="available"> -Available</span>
+            </div>
+
+            <div class="resource">
+                 <b> MCA Seminar Hall</b>
+                <span class="available"> -Available</span>
+            </div>
+
+            <div class="resource">
+                 <b>KP Joseph hall</b>
+                <span class="available"> -Available</span>
+            </div>
+
+            <div class="resource">
+                 <b> MCA Library Room </b>
+                <span class="available"> -Available</span>
+            </div>
+
+        </div>
+
+
+        <!-- Booking Form -->
+        <div class="card">
+
+            <h2>Book a Resource</h2>
+
+            <label>Resource</label>
+
+            <select id="resource">
+                <option value="">Select Resource</option>
+                <option> SCC Computer Lab</option>
+                <option>Barbier Hall</option>
+                <option>MCA Seminar Hall</option>
+                <option>KP Joseph Hall</option>
+                <option>MCA library Room</option>
+            </select>
+
+
+            <label>Date</label>
+            <input type="date" id="date">
+
+
+            <label>Start Time</label>
+            <input type="time" id="start">
+
+
+            <label>End Time</label>
+            <input type="time" id="end">
+
+
+            <label>Purpose</label>
+            <input type="text" id="purpose"
+                   placeholder="Example: Department meeting">
+
+
+            <button onclick="bookResource()">
+                Book Resource
+            </button>
+
+        </div>
+
+
+        <!-- Booking Result -->
+        <div class="card">
+
+            <h2>Booking Details</h2>
+
+            <div id="result">
+                No booking made yet.
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <script src="script.js"></script>
+
+</body>
+</html>
