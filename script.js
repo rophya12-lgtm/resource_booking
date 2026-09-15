@@ -1,12 +1,45 @@
+// Convert 24-hour time to AM/PM
+function formatTime(time) {
+
+    let parts = time.split(":");
+
+    let hour = parseInt(parts[0]);
+    let minute = parts[1];
+
+    let period = hour >= 12 ? "PM" : "AM";
+
+    if (hour === 0) {
+        hour = 12;
+    } 
+    else if (hour > 12) {
+        hour = hour - 12;
+    }
+
+    return hour + ":" + minute + " " + period;
+}
+
+
 // Book Resource
 function bookResource() {
 
-    let department = document.getElementById("department").value;
-    let resource = document.getElementById("resource").value;
-    let date = document.getElementById("date").value;
-    let start = document.getElementById("start").value;
-    let end = document.getElementById("end").value;
-    let purpose = document.getElementById("purpose").value;
+    let department =
+        document.getElementById("department").value;
+
+    let resource =
+        document.getElementById("resource").value;
+
+    let date =
+        document.getElementById("date").value;
+
+    let start =
+        document.getElementById("start").value;
+
+    let end =
+        document.getElementById("end").value;
+
+    let purpose =
+        document.getElementById("purpose").value;
+
 
     // Check empty fields
     if (
@@ -17,31 +50,36 @@ function bookResource() {
         end === "" ||
         purpose === ""
     ) {
+
         alert("Please fill all the details.");
+
         return;
     }
+
 
     // Check time
     if (start >= end) {
+
         alert("End time must be later than Start time.");
+
         return;
     }
 
-    // Get existing bookings
+
+    // Get previous bookings
     let bookings =
         JSON.parse(localStorage.getItem("bookings")) || [];
 
 
-    // Check whether resource is already booked
-    let alreadyBooked = bookings.some(function (booking) {
+    // Check already booked
+    let alreadyBooked = bookings.some(function(booking) {
 
-        // Same resource and same date
         if (
             booking.resource === resource &&
             booking.date === date
         ) {
 
-            // Check time overlap
+            // Check overlapping time
             if (
                 start < booking.end &&
                 end > booking.start
@@ -51,14 +89,17 @@ function bookResource() {
         }
 
         return false;
+
     });
 
 
-    // If already booked
+    // Already booked message
     if (alreadyBooked) {
 
         document.getElementById("result").innerHTML = `
+
             <div class="already-booked">
+
                 <h3>🔴 Already Booked</h3>
 
                 <p>
@@ -67,31 +108,40 @@ function bookResource() {
                 </p>
 
                 <p>
-                    Please choose another time or another resource.
+                    Please select another time or resource.
                 </p>
+
             </div>
+
         `;
 
-        alert("This resource is already booked for the selected date and time.");
+        alert(
+            "This resource is already booked!"
+        );
 
         return;
     }
 
 
-    // Create new booking
+    // Create booking
     let newBooking = {
 
         department: department,
+
         resource: resource,
+
         date: date,
+
         start: start,
+
         end: end,
+
         purpose: purpose
 
     };
 
 
-    // Add new booking
+    // Add booking
     bookings.push(newBooking);
 
 
@@ -102,18 +152,24 @@ function bookResource() {
     );
 
 
-    // Display all bookings
+    // Display bookings
     displayBookings();
 
 
-    alert("Booking confirmed successfully!");
+    alert(
+        "Booking confirmed successfully!"
+    );
 
 
-    // Clear booking fields
+    // Clear form
     document.getElementById("resource").value = "";
+
     document.getElementById("date").value = "";
+
     document.getElementById("start").value = "";
+
     document.getElementById("end").value = "";
+
     document.getElementById("purpose").value = "";
 }
 
@@ -125,12 +181,14 @@ function displayBookings() {
     let bookings =
         JSON.parse(localStorage.getItem("bookings")) || [];
 
-    let result = document.getElementById("result");
+    let result =
+        document.getElementById("result");
 
 
     if (bookings.length === 0) {
 
-        result.innerHTML = "No booking yet.";
+        result.innerHTML =
+            "No booking yet.";
 
         return;
     }
@@ -139,13 +197,15 @@ function displayBookings() {
     result.innerHTML = "";
 
 
-    bookings.forEach(function (booking, index) {
+    bookings.forEach(function(booking, index) {
 
         result.innerHTML += `
 
             <div class="booking">
 
-                <h3>Booking ${index + 1} ✅</h3>
+                <h3>
+                    Booking ${index + 1} ✅
+                </h3>
 
                 <p>
                     <b>Department:</b>
@@ -164,16 +224,15 @@ function displayBookings() {
 
                 <p>
                     <b>Time:</b>
-                    ${booking.start} -
-                    ${booking.end}
+                    ${formatTime(booking.start)}
+                    -
+                    ${formatTime(booking.end)}
                 </p>
 
                 <p>
                     <b>Purpose:</b>
                     ${booking.purpose}
                 </p>
-
-                <hr>
 
             </div>
 
@@ -182,9 +241,8 @@ function displayBookings() {
 }
 
 
-
-// Show saved bookings when page opens
-window.onload = function () {
+// Load saved bookings
+window.onload = function() {
 
     displayBookings();
 
